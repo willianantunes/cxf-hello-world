@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+	<display-name>cxf-hello-world</display-name>
+	
+ 	<!-- Logging listener --> 	
+	<listener>
+		<!-- http://stackoverflow.com/questions/10169851/initialization-using-org-springframework-web-util-log4jconfiglistener-entry-in-w -->
+		<!-- https://github.com/spring-projects/spring-framework/blob/master/spring-web/src/main/java/org/springframework/web/util/Log4jConfigListener.java -->
+		<!-- This listener should be registered before ContextLoaderListener in web.xml when using custom log4j initialization -->
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j2.xml</param-value>
+	</context-param>	
+	
+	<!-- The following configurations initialize the root application context. This is the
+	boot strap listener to start up the Spring root web application context and it loads all
+	files specified in the <param-value /> into the context -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:spring-context.xml
+		</param-value>
+	</context-param>	
+	
+	<!-- Configure CXF transport servlet in web.xml. All Web Service requests routes through this
+	transport servlet; it converts the HTTP requests to SOAP request and vice versa. -->
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>	
+</web-app>
