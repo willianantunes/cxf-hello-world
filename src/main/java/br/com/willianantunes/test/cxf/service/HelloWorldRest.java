@@ -12,8 +12,6 @@ import javax.ws.rs.core.MediaType;
  * @author Willian Antunes
  * @see <a href="https://github.com/apache/cxf/tree/master/distribution/src/main/release/samples">Samples</a>
  */
-@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 public interface HelloWorldRest {
 	@GET
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
