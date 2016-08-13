@@ -1,5 +1,6 @@
 package br.com.willianantunes.test.cxf.service;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
@@ -24,5 +25,11 @@ public class HelloWorldRestImpl implements HelloWorldRest {
 			 throw new WebApplicationException("It worked as expected. Analise your client and see whether it's caught 303 return code or not.", Response.Status.SEE_OTHER);
 
 		return "It would never be reached if you test it right!";
+	}
+
+	@Override
+	public void forceExceptionTestTwo() {		
+		// The log entry for this RUNTIME exception is written as WARN
+		throw new BadRequestException("It's my test two!");
 	}
 }

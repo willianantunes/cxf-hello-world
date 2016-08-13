@@ -24,4 +24,8 @@ public interface HelloWorldRest {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("/hello-world-rs/exception-type-one")
 	String forceExceptionTest(@FormParam("stringParam") String stringParam, @FormParam("integerValue") Integer integerValue);
+	
+	@GET
+	@Path("/hello-world-exception/two")
+	void forceExceptionTestTwo();
 }
