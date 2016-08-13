@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import br.com.willianantunes.test.cxf.exception.MyBadRequestException;
+import br.com.willianantunes.test.cxf.exception.MyException;
 import br.com.willianantunes.test.cxf.model.MyMessageModel;
 
 public class HelloWorldRestImpl implements HelloWorldRest {
@@ -48,5 +49,10 @@ public class HelloWorldRestImpl implements HelloWorldRest {
 	public void forceExceptionTestFour() {
 		throw new MyBadRequestException(new MyMessageModel(LocalDateTime.now(), "It's my test three!"), MediaType.APPLICATION_JSON);
 		
+	}
+
+	@Override
+	public void forceExceptionTestFive() {
+		throw new MyException("You're forbidden to do it!", Response.Status.FORBIDDEN);
 	}
 }

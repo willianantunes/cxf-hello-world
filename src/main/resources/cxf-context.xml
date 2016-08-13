@@ -43,7 +43,9 @@
 			<!-- To support Java-to-XML and vice-versa conversion -->
 			<bean class="com.fasterxml.jackson.jaxrs.xml.JacksonXMLProvider" />	
 			<!-- Custom object mapper -->
-			<bean class="br.com.willianantunes.test.cxf.resolver.ObjectMapperContextResolver" />			
+			<bean class="br.com.willianantunes.test.cxf.resolver.ObjectMapperContextResolver" />
+			<!-- ExceptionMapper -->
+			<bean class="br.com.willianantunes.test.cxf.exception.CustomExceptionMapper" />					
 		</jaxrs:providers>
 		<jaxrs:serviceBeans>
 			<ref bean="hello-world-rs-impl" />
