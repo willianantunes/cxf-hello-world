@@ -1,11 +1,17 @@
 package br.com.willianantunes.test.cxf.service;
 
+import java.time.LocalDateTime;
+
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import br.com.willianantunes.test.cxf.exception.MyBadRequestException;
+import br.com.willianantunes.test.cxf.model.MyMessageModel;
 
 public class HelloWorldRestImpl implements HelloWorldRest {
 
@@ -31,5 +37,16 @@ public class HelloWorldRestImpl implements HelloWorldRest {
 	public void forceExceptionTestTwo() {		
 		// The log entry for this RUNTIME exception is written as WARN
 		throw new BadRequestException("It's my test two!");
+	}
+	
+	public void forceExceptionTestThree() {		
+		// The log entry for this RUNTIME exception is written as WARN
+		throw new MyBadRequestException("It's my test two!");
+	}
+
+	@Override
+	public void forceExceptionTestFour() {
+		throw new MyBadRequestException(new MyMessageModel(LocalDateTime.now(), "It's my test three!"), MediaType.APPLICATION_JSON);
+		
 	}
 }

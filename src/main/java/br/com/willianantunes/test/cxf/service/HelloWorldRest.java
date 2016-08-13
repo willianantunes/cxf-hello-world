@@ -28,4 +28,12 @@ public interface HelloWorldRest {
 	@GET
 	@Path("/hello-world-exception/two")
 	void forceExceptionTestTwo();
+
+	@GET
+	@Path("/hello-world-exception/three")
+	void forceExceptionTestThree();
+	
+	@GET
+	@Path("/hello-world-exception/four")
+	void forceExceptionTestFour();
 }
