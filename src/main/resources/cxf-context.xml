@@ -33,13 +33,15 @@
 
 	<!-- ########################################## -->
 	<!-- REST configuration -->
-
+	
 	<bean id="hello-world-rs-impl" class="br.com.willianantunes.test.cxf.service.HelloWorldRestImpl" />
 
 	<jaxrs:server id="hello-world-rs" address="/rest">
 		<jaxrs:providers>
-			<!-- http://cxf.apache.org/docs/jax-rs-data-bindings.html -->
+			<!-- To support Java-to-JSON and vice-versa conversion -->
 			<bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+			<!-- To support Java-to-XML and vice-versa conversion -->
+			<bean class="com.fasterxml.jackson.jaxrs.xml.JacksonXMLProvider" />			
 		</jaxrs:providers>
 		<jaxrs:serviceBeans>
 			<ref bean="hello-world-rs-impl" />
