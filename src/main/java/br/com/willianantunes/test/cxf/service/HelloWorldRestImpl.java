@@ -55,4 +55,9 @@ public class HelloWorldRestImpl implements HelloWorldRest {
 	public void forceExceptionTestFive() {
 		throw new MyException("You're forbidden to do it!", Response.Status.FORBIDDEN);
 	}
+
+	@Override
+	public void forceExceptionTestSix() {
+		throw new NullPointerException("Hã?!?!?!");		
+	}
 }

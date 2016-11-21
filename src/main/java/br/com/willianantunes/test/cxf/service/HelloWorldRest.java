@@ -39,5 +39,9 @@ public interface HelloWorldRest {
 	
 	@GET
 	@Path("/hello-world-exception/five")
-	void forceExceptionTestFive();	
+	void forceExceptionTestFive();
+	
+	@GET
+	@Path("/hello-world-exception/six")
+	void forceExceptionTestSix();		
 }

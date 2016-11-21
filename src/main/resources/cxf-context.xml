@@ -54,5 +54,8 @@
 			<entry key="xml" value="application/xml" />
 			<entry key="json" value="application/json" />
 		</jaxrs:extensionMappings>
+		<jaxrs:outFaultInterceptors>
+			<bean class="br.com.willianantunes.test.cxf.interceptor.CustomOutInterceptor" />
+		</jaxrs:outFaultInterceptors>
 	</jaxrs:server>
 </beans>
